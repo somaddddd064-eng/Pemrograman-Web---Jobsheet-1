@@ -1,0 +1,6 @@
+[
+  { "member_no": "A001", "name": "Siti Aminah", "address": "Malang", "phone_no": "0812xxxx" },
+  { "member_no": "A002", "name": "Budi Santoso", "address": "Batu", "phone_no": "0813xxxx" },
+  { "member_no": "A003", "name": "Dewi Lestari", "address": "Malang", "phone_no": "0814xxxx" },
+  { "member_no": "A004", "name": "Rizky Firmansyah", "address": "Lawang", "phone_no": "0815xxxx" }
+]
