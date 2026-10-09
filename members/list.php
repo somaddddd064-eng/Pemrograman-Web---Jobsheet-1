@@ -1,11 +1,13 @@
 <?php
 $page_title = "Member List";
 include __DIR__ . '/../includes/header.php';
+require __DIR__ . '/../includes/connection.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-$daftarMembers = $_SESSION['members'] ?? [];
+$stmt = $pdo->query("SELECT * FROM members ORDER BY id DESC");
+$daftarMembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section>
@@ -14,11 +16,6 @@ $daftarMembers = $_SESSION['members'] ?? [];
     <?php if ($flash): ?>
         <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
     <?php endif; ?>
-
-    <div class="search-box">
-        <label for="search-input">Search Member Name</label>
-        <input type="text" id="search-input" placeholder="Type a member name...">
-    </div>
 
     <div class="table-responsive">
         <table>
@@ -39,10 +36,10 @@ $daftarMembers = $_SESSION['members'] ?? [];
                 <?php else: ?>
                     <?php foreach ($daftarMembers as $member): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($member['member_no']); ?></td>
+                            <td><?php echo htmlspecialchars($member['member_id']); ?></td>
                             <td><?php echo htmlspecialchars($member['name']); ?></td>
                             <td><?php echo htmlspecialchars($member['address']); ?></td>
-                            <td><?php echo htmlspecialchars($member['phone_no']); ?></td>
+                            <td><?php echo htmlspecialchars($member['phone']); ?></td>
                             <td>
                                 <button type="button">Edit</button>
                                 <button type="button" class="btn-delete">Delete</button>

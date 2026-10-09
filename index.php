@@ -1,9 +1,10 @@
 <?php
 $page_title = "Home";
 include __DIR__ . '/includes/header.php';
+require __DIR__ . '/includes/connection.php';
 
-$totalBuku = count($_SESSION['buku'] ?? []);
-$totalAnggota = count($_SESSION['members'] ?? []);
+$totalBuku = $pdo->query("SELECT COUNT(*) FROM books")->fetchColumn();
+$totalAnggota = $pdo->query("SELECT COUNT(*) FROM members")->fetchColumn();
 ?>
 
 <section>

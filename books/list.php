@@ -1,11 +1,13 @@
 <?php
 $page_title = "Book List";
 include __DIR__ . '/../includes/header.php';
+require __DIR__ . '/../includes/connection.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-$daftarBuku = $_SESSION['buku'] ?? [];
+$stmt = $pdo->query("SELECT * FROM books ORDER BY id DESC");
+$daftarBuku = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section>
@@ -14,11 +16,6 @@ $daftarBuku = $_SESSION['buku'] ?? [];
     <?php if ($flash): ?>
         <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
     <?php endif; ?>
-
-    <div class="search-box">
-        <label for="search-input">Search Book Title</label>
-        <input type="text" id="search-input" placeholder="Type a book title...">
-    </div>
 
     <div class="table-responsive">
         <table>
