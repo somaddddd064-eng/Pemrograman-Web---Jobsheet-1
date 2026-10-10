@@ -1,9 +1,5 @@
 <?php
 session_start();
-$jobsheetRoot = dirname(__DIR__);
-$scriptDir = dirname($_SERVER['SCRIPT_FILENAME']);
-$rel = ltrim(str_replace('\\', '/', substr($scriptDir, strlen($jobsheetRoot))), '/');
-$base = $rel === '' ? '' : str_repeat('../', substr_count($rel, '/') + 1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +7,8 @@ $base = $rel === '' ? '' : str_repeat('../', substr_count($rel, '/') + 1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIMPUS-Mini<?php echo isset($page_title) ? ' | ' . $page_title : ''; ?></title>
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/app.js" defer></script>
 </head>
 <body>
 <header>
@@ -19,11 +16,11 @@ $base = $rel === '' ? '' : str_repeat('../', substr_count($rel, '/') + 1);
     <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
     <nav>
         <ul>
-            <li><a href="<?php echo $base; ?>index.php">Home</a></li>
-            <li><a href="<?php echo $base; ?>books/list.php">Book List</a></li>
-            <li><a href="<?php echo $base; ?>books/add.php">Add Book</a></li>
-            <li><a href="<?php echo $base; ?>members/list.php">Member List</a></li>
-            <li><a href="<?php echo $base; ?>members/add.php">Add Member</a></li>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/books/list.php">Book List</a></li>
+            <li><a href="/books/add.php">Add Book</a></li>
+            <li><a href="/members/list.php">Member List</a></li>
+            <li><a href="/members/add.php">Add Member</a></li>
         </ul>
     </nav>
 </header>
